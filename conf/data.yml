@@ -1,0 +1,26 @@
+Language(spanish):
+    name:                   Spanish
+    languageCode:           es
+
+Language(english):
+    name:                   English
+    languageCode:           en
+
+User(bob):
+    email:          bob@gmail.com
+    password:       secret
+    fullname:       Bob
+    isAdmin:        true
+    preferredLanguage: spanish
+
+User(jeff):
+    email:          jeff@gmail.com
+    password:       secret
+    fullname:       Jeff
+    preferredLanguage: spanish
+
+User(paul):
+    email:          paul@gmail.com
+    password:       secret
+    fullname:       Paul
+    preferredLanguage: english

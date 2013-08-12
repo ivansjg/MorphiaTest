@@ -1,0 +1,13 @@
+# Application dependencies
+
+require:
+    - play
+    - com.gelinsoft -> morphia 1.2.15a
+    - de.flapdoodle.embed -> de.flapdoodle.embed.mongo 1.34
+
+repositories:
+    - gelinsoft:
+        type: http
+        artifact: "http://gelinsoft.com/play/repo/[module]-[revision].zip"
+        contains:
+            - com.gelinsoft -> *
