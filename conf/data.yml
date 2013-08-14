@@ -10,7 +10,6 @@ User(bob):
     email:          bob@gmail.com
     password:       secret
     fullname:       Bob
-    isAdmin:        true
     preferredLanguage: spanish
 
 User(jeff):
@@ -24,3 +23,21 @@ User(paul):
     password:       secret
     fullname:       Paul
     preferredLanguage: english
+
+TagType(category):
+    value:          Category
+
+TagType(hashtag):
+    value:          HashTag
+
+Tag(foreignAffairs):
+    value:          Foreign Affairs
+    type:           category
+
+Tag(economy):
+    value:          Economy
+    type:           category
+
+Tag(rajoyladron):
+    value:          RajoyLadrón
+    type:           hashtag
