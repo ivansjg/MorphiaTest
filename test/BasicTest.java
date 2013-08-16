@@ -8,6 +8,8 @@ import play.libs.Codec;
 
 import org.bson.types.ObjectId;
 
+import play.modules.morphia.Model.MorphiaQuery;
+
 import models.*;
 
 public class BasicTest extends UnitTest {
@@ -31,6 +33,19 @@ public class BasicTest extends UnitTest {
         user.fullname = "Imanol Pérez";
         user.save();
 
+        List<User> allUsers = User.findAll();
+        List<User> imanolUsers = User.find("email", "imanol@gmail.com").asList();
+
+        user = User.q().filter("preferredLanguage.languageCode", "es").get();
+        Logger.info("name preflang(es): %s", user.preferredLanguage.name);
+
+        MorphiaQuery q = User.q();
+        q.or(q.criteria("email").containsIgnoreCase("bOb"), 
+             q.criteria("fullname").containsIgnoreCase("jeff"));
+        List<User> lista = q.asList();
+        assertEquals(lista.size(), 2);
+
+/*
         for (int i = 1 ; i <= 5000000 ; i++) {
             user = new User();
             user.email = Codec.UUID() + "@gmail.com";
@@ -38,6 +53,7 @@ public class BasicTest extends UnitTest {
             user.fullname = user.email;
             user.save();
         }
+        */
     }
 
 }
