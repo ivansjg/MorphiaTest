@@ -22,6 +22,7 @@ import de.flapdoodle.embed.mongo.config.RuntimeConfigBuilder;
 import de.flapdoodle.embed.mongo.Command;
 import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import de.flapdoodle.embed.process.config.io.ProcessOutput;
+import de.flapdoodle.embed.mongo.MongodProcess;
 
 /**
  * Special subclass of {@link Mongo} that
@@ -89,7 +90,7 @@ public class EmbeddedMongo extends Mongo {
         MongodStarter runtime = MongodStarter.getInstance(runtimeConfig);
         mongodExe = runtime.prepare(new MongodConfig(version, port, Network.localhostIsIPv6()));
         mongod = mongodExe.start();
-        mongo = new Mongo("localhost", PORT);
+        mongo = new Mongo(host, port);
     }
 
     public void stop() {
