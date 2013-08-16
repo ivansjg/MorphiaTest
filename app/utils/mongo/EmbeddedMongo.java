@@ -12,7 +12,6 @@ import com.mongodb.WriteConcern;
 import de.flapdoodle.embed.mongo.MongodStarter;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.config.MongodConfig;
-import de.flapdoodle.embed.mongo.config.MongodProcessOutputConfig;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.io.IStreamProcessor;
 import de.flapdoodle.embed.process.io.NamedOutputStreamProcessor;
@@ -34,7 +33,6 @@ public class EmbeddedMongo extends Mongo {
 
     private static MongodExecutable mongodExe;
     private static MongodProcess mongod;
-    private static Mongo mongo;
 
     private static final Logger LOG = LoggerFactory.getLogger(EmbeddedMongo.class);
 
@@ -90,7 +88,6 @@ public class EmbeddedMongo extends Mongo {
         MongodStarter runtime = MongodStarter.getInstance(runtimeConfig);
         mongodExe = runtime.prepare(new MongodConfig(version, port, Network.localhostIsIPv6()));
         mongod = mongodExe.start();
-        mongo = new Mongo(host, port);
     }
 
     public void stop() {
