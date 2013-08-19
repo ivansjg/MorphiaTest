@@ -81,6 +81,8 @@ public class BasicTest extends UnitTest {
         DBCollection col = db.getCollection("users");
         col.update(query, update);
 
+        /********************************/
+
         query = new BasicDBObject("email", new BasicDBObject("$ne", "paul@gmail.com"));
         DBCursor cursor = col.find(query);
 
